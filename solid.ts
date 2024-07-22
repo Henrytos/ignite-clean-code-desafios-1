@@ -25,26 +25,34 @@ class Product {
   }
 }
 
-class GetOrderDiscount {
-  execute(amount: number, methodPayment: string) {
-    if (methodPayment == "billet") {
-      return amount * 0.1;
-    }
+interface PaymentMethod {
+  getDiscount(amount: number): number;
+}
 
-    if (methodPayment == "credit") {
-      return amount * 0;
-    }
-
-    if (methodPayment == "debit") {
-      return amount * 0.05;
-    }
-
+class PaymentByBillet implements PaymentMethod {
+  getDiscount(amount: number) {
+    return amount * 0.1;
+  }
+}
+class PaymentByCredit implements PaymentMethod {
+  getDiscount(amount: number) {
     return 0;
   }
 }
+class PaymentByDebit implements PaymentMethod {
+  getDiscount(amount: number) {
+    return amount * 0.05;
+  }
+}
 
-const order = new Product("camisa", 1000);
+class GetOrderDiscount {
+  execute(amount: number, methodPayment: PaymentMethod) {
+    return methodPayment.getDiscount(amount);
+  }
+}
+
+const order = new Product("phone", 1000);
 
 const getOrderDiscount = new GetOrderDiscount();
 
-getOrderDiscount.execute(order.price, "billet");
+getOrderDiscount.execute(order.price, new PaymentByBillet());
