@@ -61,4 +61,7 @@ const order = new Product("phone", 1000);
 
 const getOrderDiscount = new GetOrderDiscount();
 
+getOrderDiscount.execute(order.price, new PaymentByBillet());
+getOrderDiscount.execute(order.price, new PaymentByCredit());
+getOrderDiscount.execute(order.price, new PaymentByDebit());
 getOrderDiscount.execute(order.price, new PaymentByPix());
