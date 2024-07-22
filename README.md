@@ -1,38 +1,34 @@
-<p align="center">
-  <img alt="Rocketseat Education" src="https://avatars.githubusercontent.com/u/69590972?s=200&v=4" width="100px" />
-</p>
 
-<p align="center">
-  <img src="https://img.shields.io/static/v1?label=Rocketseat&message=Education&color=8257e5&labelColor=202024" alt="Rocketseat Project" />
-  <a href="LICENSE"><img  src="https://img.shields.io/static/v1?label=License&message=MIT&color=8257e5&labelColor=202024" alt="License"></a>
-</p>
+# PILARES DO CLEAN CODE
 
 
-## 💻 Projeto
+## LEGIBILIDADE 
+meu código precisa ser legivel por outros programadores sendo uma metafora do livro onde nós somos os autores e nossa equipe como leitores
 
-ignite-clean-code-desafios
+## ESCABILIDADE
+se desejo obter um software que tenha escabilidade preciso respeitar os principios do clean code
 
-## 📝 Licença
+## MANUTABILIDADE 
+nada adianta se tenho um codigo grande e bonito se não posso dar manutenção nele , para alcançar este estado preciso dos seguinte preceitos 
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+## CONFIABILIDADE
+meu codigo precisa estar confiavel para os outros programadores possam dar suporte nele 
 
----
+## TESTABILIDADE 
+para ajudar na manutebilidade e confiabilidade é cruciual eu desenvovler testes (E2E, INT, UNIT)
 
-<p align="center">
-  Feito com 💜 by Rocketseat
-</p>
+## PRESIBILIDADE 
+meu código deve ser presivel sem efeitos colatarais como por exemplo uma função que cria o usuario e a mesmo tempo cria um token (nada presuvel né?)
 
+# clean code no código
 
-<!--START_SECTION:footer-->
-
-<br />
-<br />
-
-<p align="center">
-  <a href="https://discord.gg/rocketseat" target="_blank">
-    <img align="center" src="https://storage.googleapis.com/golden-wind/comunidade/rodape.svg" alt="banner"/>
-  </a>
-</p>
-
-<!--END_SECTION:footer-->
-
+## nomenclatura-de-variaveis
+- sempre deve ser em ingles
+- sempre deve ser descritiva 
+- por que existe , como usar , oque retorna ...
+- classes são sibstantivo e função são verbos 
+ expl:
+ enviar notificação ao autor do post 
+ classe : Author
+ função : SendNotificationToAuthorPost 
+ 
