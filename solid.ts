@@ -45,6 +45,12 @@ class PaymentByDebit implements PaymentMethod {
   }
 }
 
+class PaymentByPix implements PaymentMethod {
+  getDiscount(amount: number): number {
+    return amount * 0.15;
+  }
+}
+
 class GetOrderDiscount {
   execute(amount: number, methodPayment: PaymentMethod) {
     return methodPayment.getDiscount(amount);
@@ -55,4 +61,4 @@ const order = new Product("phone", 1000);
 
 const getOrderDiscount = new GetOrderDiscount();
 
-getOrderDiscount.execute(order.price, new PaymentByBillet());
+getOrderDiscount.execute(order.price, new PaymentByPix());
