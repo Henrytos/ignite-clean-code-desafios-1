@@ -10,6 +10,7 @@ interface ProductProps {
   name: string;
   price: number;
 }
+
 class Product {
   private props: ProductProps;
 
@@ -40,6 +41,7 @@ interface PaymentCredit {
   expires: number;
   installments: number;
 }
+
 class PaymentByCredit implements PaymentMethod, PaymentCredit {
   number: number;
   expires: number;
@@ -67,6 +69,7 @@ class PaymentByCredit implements PaymentMethod, PaymentCredit {
     return 0;
   }
 }
+
 class PaymentByDebit implements PaymentMethod {
   getDiscount(amount: number) {
     return amount * 0.05;
