@@ -52,16 +52,17 @@ class PaymentByPix implements PaymentMethod {
 }
 
 class GetOrderDiscount {
-  execute(amount: number, methodPayment: PaymentMethod) {
-    return methodPayment.getDiscount(amount);
+  private methodPayment: PaymentMethod;
+  constructor(methodPayment: PaymentMethod) {
+    this.methodPayment = methodPayment;
+  }
+  execute(amount: number) {
+    return this.methodPayment.getDiscount(amount);
   }
 }
 
 const order = new Product("phone", 1000);
 
-const getOrderDiscount = new GetOrderDiscount();
+const getOrderDiscount = new GetOrderDiscount(new PaymentByBillet());
 
-getOrderDiscount.execute(order.price, new PaymentByBillet());
-getOrderDiscount.execute(order.price, new PaymentByCredit());
-getOrderDiscount.execute(order.price, new PaymentByDebit());
-getOrderDiscount.execute(order.price, new PaymentByPix());
+getOrderDiscount.execute(order.price);
