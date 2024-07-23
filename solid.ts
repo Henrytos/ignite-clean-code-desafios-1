@@ -1,4 +1,6 @@
 /* 
+    5 preceitos famos na programação
+
     S => single of responsibility principle
     O => open of closed responsibility principle
     L => liskov substitution responsibility principle

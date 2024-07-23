@@ -54,3 +54,96 @@ Enviar notificação ao autor do post:
 ![Naming Variables](https://image.slidesharecdn.com/namingthings-190130230213/95/naming-things-3-638.jpg?cb=1548882058)
 
 Seguindo esses pilares, garantimos que nosso código seja mais fácil de ler, manter e escalar, além de ser confiável e testável. A prática contínua dessas técnicas nos ajuda a nos tornarmos melhores desenvolvedores e a produzir software de alta qualidade.
+
+
+# SOLID 
+5 preceitos famosos na programação para elevar a escabilidade e desenvolvimento do nosso software
+
+## S (single of responsibility principle)
+principio nda responsabilidade unica , uma classe,função,modulo,arquivo... deve fazer somente uma coisa e deve cumnprir isso de forma perfeita 
+
+    class GetOrderDiscount {
+        execute(amount: number) {
+            //altas coisinhas aqui
+        }
+    }
+
+## O (open of closed responsibility principle)
+principio de aberto e fechado , diz que uma uma classe,função,modulo,arquivo...deve estar ffechada para alteração e aberta para extenção
+
+#### fechada para alteração
+    interface PaymentMethod {
+        getDiscount(amount: number): number;
+    }
+
+    class GetOrderDiscount {
+        execute(
+            amount: number, 
+            paymentMethod: PaymentMethod) {
+            return this.paymentMethod.getDiscount(amount);
+        }
+    }
+
+#### aberto para extenção
+    class PaymentByDebit implements PaymentMethod {
+        getDiscount(amount: number) {
+            return amount * 0.05;
+        }
+    }
+
+    class PaymentByBillet implements PaymentMethod {
+        getDiscount(amount: number) {
+            return amount * 0.1;
+        }
+    }
+
+#### execução:
+    const getOrderDiscount = new GetOrderDiscount()
+
+    getOrderDiscount.execute(1000, new PaymentByDebit())
+    
+
+## L (liskov substitution responsibility principle)
+principio da substituição de classe diz que deve ser possivel alterar as denpendencias de uma determinada funcionalidade sem alterar seu resultado respeitando assim tambem o **O** do SOLID
+
+#### exemplo
+tendo em mente o código acima do open closed principal
+
+    const getOrderDiscount = new GetOrderDiscount()
+
+    getOrderDiscount.execute(1000, new PaymentByDebit())
+    getOrderDiscount.execute(1000, new PaymentByBillet()) 
+
+## I (interface segregation responsibility principle)
+responsabilidade da segregação de interfaces diz que devemos dividir interface para melhor modularização de expectativas de certas interfaces, isso ajuda evitar campos opcionais 
+
+#### exemplo
+    interface PaymentMethod {
+        getDiscount(amount: number): number;
+    }
+
+    interface PaymentCredit {
+        number: number;
+        expires: number;
+        installments: number;
+    }
+
+    class PaymentByCredit implements PaymentMethod, PaymentCredit {}
+
+
+## D (dependency inversion responsibility  principle)  
+responsabilidade de inverção de dependencias diz que nossa :classe,função,modulo,arquivo...  deve ter suas dependecias inferidas na hora de execução , se conecta muito com **L**  e  **O** do SOLID
+
+#### exemplo 
+
+    class GetOrderDiscount {
+        private paymentMethod: PaymentMethod;
+
+        constructor(paymentMethod: PaymentMethod) {
+            this.paymentMethod = paymentMethod;
+        }
+
+        execute(amount: number) {
+            return this.paymentMethod.getDiscount(amount);
+        }
+    }
