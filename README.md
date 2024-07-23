@@ -55,6 +55,46 @@ Enviar notificação ao autor do post:
 
 Seguindo esses pilares, garantimos que nosso código seja mais fácil de ler, manter e escalar, além de ser confiável e testável. A prática contínua dessas técnicas nos ajuda a nos tornarmos melhores desenvolvedores e a produzir software de alta qualidade.
 
+## booleanos 
+uma ideia interesante dos boleanso é deixalos eles com sufixos e palavras chaves como : is, has, does, not ,have
+como se fosse uma sentença e se completasse com if 
+
+#### good example
+    if(user.is_authenticated){
+        //altas coisas
+    }
+    
+    if(hasATicket){
+        //altas coisas
+    }
+
+    if(isParkOpen){
+        //altas coisas
+    }
+    
+    if(isAllowed){
+        //altas coisas
+    }
+
+#### bad example 
+    if(authenticated){
+        //altas coisas
+    }
+    
+    if(ticket){
+        //altas coisas
+    }
+
+    if(park){
+        //altas coisas
+    }
+    
+    if(allowed){
+        //altas coisas
+    }
+
+
+
 
 # SOLID 
 5 preceitos famosos na programação para elevar a escabilidade e desenvolvimento do nosso software
